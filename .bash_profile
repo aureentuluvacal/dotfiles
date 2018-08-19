@@ -3,26 +3,8 @@
 # for examples
 
 # Aliases
-alias python='python3.6'
 alias prof='vim ~/.bashrc'
 alias reprof='. ~/.bashrc'
-alias dev='cd /mnt/c/Users/xXver/Dev/'
-alias work='cd /mnt/c/Users/xXver/Work/'
-alias lessonly='cd /mnt/c/Users/xXver/Work/lessonly/'
-alias reporting='cd /mnt/c/Users/xXver/Work/lessonly-reporting/'
-alias beg='bundle exec guard'
-alias bes='bundle exec sidekiq -c ${SIDEKIQ_CONCURRENCY:-4} -q default -q mailers -q long_running -q recalculate_user_smart_groups'
-alias lint='bundle exec rubocop --fail-level convention --except Metrics --display-cop-names'
-alias fixshit='export XDG_RUNTIME_DIR=/tmp/`whoami`'
-alias fixpg='export PGCLUSTER=9.6/main'
-alias es='sudo -i service elasticsearch start'
-alias est='sudo -i service elasticsearch stop'
-alias prodr='heroku run rails c -a lessonly-follower'
-alias prodw='heroku run rails c -a lessons-igo'
-alias pgfuck='sudo ln -s /usr/pgsql-9.6/bin/pg_dump /usr/bin/pg_dump --force'
-alias redshift='psql -h lessonly-events.cux8rc0od3d4.us-east-1.redshift.amazonaws.com -d events -p 5439 -U metabase'
-alias reportingdb='psql -h reporting-app-production.civsndetylng.us-east-1.rds.amazonaws.com -d reporting_app -p 5432 -U mLVhTVRttzhpZAkA'
-alias me='cd /mnt/c/Users/xXver/Dev/caryssaperez.github.io/'
 
 # Git Aliases
 alias gs='git status'
