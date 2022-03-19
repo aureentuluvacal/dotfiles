@@ -20,36 +20,27 @@ alias reprof='source ~/.zshrc'
 alias gs='git status'
 alias gb='git branch'
 alias ga='git add .'
-alias gpm='git push origin master'
-alias gplm='git pull origin master'
-alias gld='git pull origin dev'
+alias gpm='git push origin main'
+alias gplm='git pull origin main'
+alias gld='git pull origin develop'
 alias gp='git push origin $(git symbolic-ref -q HEAD)'
-alias qaclear='gb | grep "qa-build/" | xargs git branch -D'
-alias rclear='gb | grep "release/" | xargs git branch -D'
+alias cpclear='gb | grep "cp/" | xargs git branch -D'
 
 # Other Aliases
 alias kube='kubectl proxy'
-alias cons='docker-compose run web rails console'
-alias testm='docker-compose -f docker-compose.test.yml run --rm --service-ports web bundle exec rails db:migrate RAILS_ENV=test'
-alias fun='cd ~/Fun/'
+alias cons='docker-compose run api rails console'
 
 # Kubernetes functions and aliases
 function k8s_exec() {
 	kubectl -it exec -n $1 $(kubectl get pods -n $1 | grep -oh -m 1 "web-\w*-\w*") -- ${@:2}
 }
-alias k8srun='k8s_exec'
-
-function loc() {
-	git log --author="$1" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
-}
-alias locc='loc'
+alias execpod='k8s_exec'
 
 function destroy() {
-kubectl delete pod $1 --grace-period=0 --force --namespace $2
+        kubectl delete pod $1 --grace-period=0 --force --namespace $2
 }
 alias deletepod='destroy'
 
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fpath=(~/.zsh/completion $fpath)
-eval "$(rbenv init -)"
